@@ -1,4 +1,5 @@
 
+import os
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("Hesap Makinesi")
@@ -25,5 +26,7 @@ def bol(a: float, b: float) -> float:
         return "Hata: Sıfıra bölme!"
     return a / b
 
+# HTTP server olarak çalıştır (Render için gerekli)
 if __name__ == "__main__":
-    mcp.run()
+    port = int(os.environ.get("PORT", 8000))
+    mcp.run(transport="sse", port=port, host="0.0.0.0")
