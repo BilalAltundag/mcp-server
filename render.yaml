@@ -1,0 +1,9 @@
+yamlservices:
+  - type: web
+    name: mcp-matematik-server
+    env: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
